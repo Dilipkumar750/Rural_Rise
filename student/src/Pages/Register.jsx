@@ -71,7 +71,7 @@ function Register() {
             <h1>REGISTER</h1>
           </View>
           <Form>
-            {/* Name Field */}
+            {/ Name Field /}
             <Form.Group controlId="formName" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -88,7 +88,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/* Email Field */}
+            {/ Email Field /}
             <Form.Group controlId="formEmail" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -105,7 +105,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/* Role Field */}
+           
             <Form.Group controlId="forrole" className="mb-3">
               <InputGroup>
                 <Form.Select
@@ -117,12 +117,12 @@ function Register() {
                   <option value="" disabled>Select Role</option>
                   <option value="student">Student</option>
                   <option value="mentor">Mentor</option>
-                  <option value="admin">Admin</option>
+                  {/* {/ <option value="admin">Admin</option>/} */}
                 </Form.Select>
               </InputGroup>
             </Form.Group>
 
-            {/* Contact Number Field */}
+            
             <Form.Group controlId="formContactNumber" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -139,7 +139,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/* Class Field */}
+            {/ Class Field /}
             <Form.Group controlId="formClass" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -156,7 +156,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/* Department Field */}
+            {/ Department Field /}
             <Form.Group controlId="formDepartment" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -173,7 +173,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/* Password Field */}
+            
             <Form.Group controlId="formPassword" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -191,7 +191,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/* Confirm Password Field */}
+            
             <Form.Group controlId="formConfirmPassword" className="mb-3">
               <InputGroup>
                 <Form.Control

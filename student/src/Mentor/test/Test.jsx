@@ -3,9 +3,12 @@ import HeaderComponent from "../../components/HeaderComponent";
 import View from "../../components/View";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 function Test() {
+    const { role } = useParams();
+
     return (
         <>
             <HeaderComponent page="Progress Chart" title="Check Progress" />
@@ -75,7 +78,7 @@ function Test() {
 
                 </View>
             </View>
-            <View style={{ margin: '0 auto', width: 'fit-content' }}><Link to={`/MentorTestSuccess`}><Button style={{ backgroundColor: '#DBDC31', border: '0', padding: "4px 20px", color: 'black' }}>Submit</Button></Link></View>
+            <View style={{ margin: '0 auto', width: 'fit-content' }}><Link to={`/MentorTestSuccess/${role}`}><Button style={{ backgroundColor: '#DBDC31', border: '0', padding: "4px 20px", color: 'black' }}>Submit</Button></Link></View>
         </>
     );
 }

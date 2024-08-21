@@ -13,7 +13,7 @@ function TestList() {
     <HeaderComponent page="Progress Chart" title="Check Progress"/>
     <View style={{padding:'1rem',display:'grid',gap:'1rem'}}>
         <p style={{ textAlign: 'center',}}>Kindly Take The Tests Given Below For Checking The Progress</p>
-        <Link to='/mentorMathTest'>
+        <Link to='/MentorTest/mentor'>
           <View>
               <h5>Test - 1</h5>
               <List>

@@ -34,29 +34,29 @@ function Home() {
       <View
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
+          gridTemplateColumns: "1fr 1fr",
           gap: "1rem",
           padding: "0 0.6rem",
         }}
       >
-        <View style={{height: '80px'}}>
+        <View style={{height: '150px'}}>
           <SmallBox image={RequestImg} title="Request Form" onPress={()=>navigate('/registrationForm')}/>
         </View>
-        <View style={{height: '80px'}}>
+        <View style={{height: '150px'}}>
           <SmallBox image={studyImg} title="Add Study Material" onPress={()=>navigate('/addClass')} />
         </View>
-        <View style={{height: '80px'}}>
+        {/* <View style={{height: '150px'}}>
           <SmallBox image={StudentImg} title="Student Record" />
-        </View>
-        <View style={{height: '80px'}}>
+        </View> */}
+        <View style={{height: '150px'}}>
           <SmallBox image={StudentReqImg} title="Student Request" onPress={()=>navigate('/studentTables')} />
         </View>
-        <View style={{height: '80px'}}>
+        <View style={{height: '150px'}}>
           <SmallBox image={Addtest} title="Add Test" onPress={()=>navigate('/TestHome')} />
         </View>
-        <View style={{height: '80px'}}>
+        {/* <View style={{height: '150px'}}>
           <SmallBox image={PerformanceImg} title="Student Performance" />
-        </View>
+        </View> */}
       </View>
       <View style={{
         border: "1px solid rgba(0, 0, 0, 0.16)",

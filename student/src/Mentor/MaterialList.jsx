@@ -25,17 +25,17 @@ export default function MaterialList() {
                 </List>
                 <List>
                     <Image src={openBookImg} alt="open book" style={{ width: '80%' }} />
-                    <span>Class-1st</span>
+                    <span>Class-2st</span>
                     <Link to='/MentorSuccess/book'><HiDownload style={{ height: '100%', width: '100%' }} /></Link>
                 </List>
                 <List>
                     <Image src={openBookImg} alt="open book" style={{ width: '80%' }} />
-                    <span>Class-1st</span>
+                    <span>Class-3st</span>
                     <Link to='/MentorSuccess/book'><HiDownload style={{ height: '100%', width: '100%' }} /></Link>
                 </List>
                 <List>
                     <Image src={openBookImg} alt="open book" style={{ width: '80%' }} />
-                    <span>Class-1st</span>
+                    <span>Class-4st</span>
                     <Link to='/MentorSuccess/book'><HiDownload style={{ height: '100%', width: '100%' }} /></Link>
                 </List>
             </View>

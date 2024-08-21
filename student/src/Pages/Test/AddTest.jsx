@@ -15,7 +15,7 @@ function AddTest() {
       <HeaderComponent page="Add Test" title="Adding Test Form" />
       <Container fluid style={{ marginTop: '1rem' }}>
         <Card>
-          <Link to={`/MentorTest`}>
+          <Link to={`/MentorTest/student`}>
             <Card.Header className="d-flex align-items-center">
               <img src={addtest} alt="Add Class" style={{ width: '30px', marginRight: '1rem' }} />
               ADD TEST

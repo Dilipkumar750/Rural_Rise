@@ -5,9 +5,11 @@ import test from "../../assets/test.png";
 import { Image } from '../../components/Image';
 import View from '../../components/View';
 import success from "../../assets/SUCCESS.png";
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 
 function Success() {
+    const { role } = useParams();
+
     return (
         <>
             <HeaderComponent page="Progress Chart" title="Check Progress" />
@@ -35,7 +37,10 @@ function Success() {
                             </p>
                         </View>
                     </View>
-                    <Link to="/Progress"><p style={{ textAlign: 'center'}}>Click here for progress checking</p></Link>
+                    <Link to={role=== 'mentor'? "/Progress":'/home'}><p style={{ textAlign: 'center'}}>
+                    {role=== 'mentor'? " Click here for progress checking":'go to home'}
+                       </p>
+                    </Link>
                 </View>
             </View>
         </>

@@ -23,6 +23,9 @@ function MentorSuccess() {
     if(title==='video'){
       setContent('video is successfully downloaded Please check you’re download folder')
     }
+    if(title==='admin'){
+      setContent('Mentor added successfully Please check mentor record for confirmation')
+    }
   }, [title,content])
 
   return (

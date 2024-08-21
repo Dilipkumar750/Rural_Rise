@@ -24,7 +24,6 @@ function StudentTables() {
   //   { id: 7, name: 'Archana' },
   // ];
 // const students = data.data
-console.log(data1)
   return (
     <>
       <HeaderComponent page="Student Request" title="Paid Student List" />
