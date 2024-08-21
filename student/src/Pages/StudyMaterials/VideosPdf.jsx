@@ -12,20 +12,34 @@ import { HOST } from '../../App';
 
 function MyVerticallyCenteredModal(props) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [error, setError] = useState('');
 
-  // Handle file input change
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
-
-  // Handle Add button click
-  const handleAddClick = () => {
-    if (selectedFile) {
-      console.log('Selected video file:', selectedFile);
-    } else {
-      console.log('No file selected');
+  const handleAddClick = async () => {
+    if (!selectedFile) {
+      setError('Please select a file.');
+      return;
     }
-    props.onHide(); // Close the modal
+    if (!selectedFile.type.startsWith('video/')) {
+      setError('Only video files are allowed.');
+      return;
+    }
+
+    setError('');
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    try {
+      await axios.post(`${HOST}/upload/document`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      console.log('File uploaded successfully');
+      props.onHide(); // Close the modal after successful upload
+    } catch (err) {
+      console.error('Error uploading file:', err);
+      setError('Error uploading file. Please try again.');
+    }
   };
 
   return (
@@ -42,12 +56,14 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Header>
       <Modal.Body>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Upload a video file</Form.Label>
+          <Form.Label>Select Video</Form.Label>
           <Form.Control
             type="file"
-            accept="video/*" // Restrict file type to videos
-            onChange={handleFileChange}
+            name="file"
+            accept="video/*" // Restrict file selection to video files
+            onChange={(e) => setSelectedFile(e.target.files[0])}
           />
+          {error && <div className="text-danger mt-2">{error}</div>}
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
@@ -69,7 +85,7 @@ function VideosPdf() {
  
   return (
     <>
-      <HeaderComponent page="Add study Materials" title="Books" />
+      <HeaderComponent page="Add study Materials" title="Videos" />
       <div>
         <View
           style={{
@@ -83,7 +99,7 @@ function VideosPdf() {
           }}
         >
           <View style={{ height: '150px' }} onClick={() => setModalShow(true)}>
-            <SmallBox image={addclass} title="add books " />
+            <SmallBox image={addclass} title="add video " />
           </View>
           <View style={{ height: '150px' }}>
             <SmallBox image={videos} title="Maths.mpv4" />

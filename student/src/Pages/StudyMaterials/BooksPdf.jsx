@@ -20,8 +20,8 @@ function MyVerticallyCenteredModal(props) {
       setError('Please select a file.');
       return;
     }
-    if (!selectedFile.type.startsWith('video/')) {
-      setError('Only video files are allowed.');
+    if (selectedFile.type !== 'application/pdf') {
+      setError('Only PDF files are allowed.');
       return;
     }
 
@@ -30,7 +30,7 @@ function MyVerticallyCenteredModal(props) {
     formData.append('file', selectedFile);
 
     try {
-      await axios.post(`${HOST}/upload/video`, formData, {
+      await axios.post(`${HOST}/upload/document`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -52,16 +52,16 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Upload Video
+          Upload PDF
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Select Video</Form.Label>
+          <Form.Label>Select PDF</Form.Label>
           <Form.Control
             type="file"
             name="file"
-            accept="video/*" // Restrict file selection to video files
+            accept=".pdf" // Restrict file selection to PDF files
             onChange={(e) => setSelectedFile(e.target.files[0])}
           />
           {error && <div className="text-danger mt-2">{error}</div>}

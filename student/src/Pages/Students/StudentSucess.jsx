@@ -4,6 +4,7 @@ import View from "../../components/View";
 import success from "../../assets/SUCCESS.png";
 import { Image } from '../../components/Image';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 function StudentSuccess() {
   return (
@@ -31,22 +32,24 @@ function StudentSuccess() {
           </p>
         </View>
       </View>
-      <Button
-        variant="primary"
-        className="mb-0"
-        style={{
-          backgroundColor: '#DBDC31',
-          borderColor: '#DBDC31',
-          position: 'absolute',
-          bottom: '20px',
-          left: '50%',
-          transform: 'translateX(-50%)',  // Center the button horizontally.
-          width: '90%'
-        }}
-        href='/home'
-      >
-        OK
-      </Button>
+      <Link to='/home'>
+        <Button
+          variant="primary"
+          className="mb-0"
+          style={{
+            backgroundColor: '#DBDC31',
+            borderColor: '#DBDC31',
+            position: 'absolute',
+            bottom: '20px',
+            left: '50%',
+            transform: 'translateX(-50%)',  // Center the button horizontally.
+            width: '90%'
+          }}
+          
+        >
+          OK
+        </Button>
+      </Link>
     </>
   );
 }

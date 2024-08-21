@@ -16,7 +16,6 @@ function PaymentDetails() {
                     borderRadius: "10px",
                     padding: "1rem",
                     margin: "1rem",
-                    height:'80vh'
                 }}>
                 <View style={{ display: 'grid', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
                     <View>

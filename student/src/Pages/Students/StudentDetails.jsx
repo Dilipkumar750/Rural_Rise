@@ -5,7 +5,8 @@ import HeaderComponent from '../../components/HeaderComponent';
 import View from "../../components/View";
 import axios from 'axios';
 import { HOST } from '../../App';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 function StudentDetails() {
   const [email, setEmail] = useState('');
   const [idNo, setIdNo] = useState('');
@@ -54,14 +55,16 @@ function StudentDetails() {
                 />
               </Form.Group>
               <View className="text-center mt-3">
-                <Button
-                  variant="primary"
-                  type="submit"
-                  style={{ backgroundColor: '#DBDC31', borderColor: '#DBDC31', width: '50%' }}
-                  href='/studentSucess'
-                >
-                  SEND
-                </Button>
+                <Link to='/studentSucess'>
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    style={{ backgroundColor: '#DBDC31', borderColor: '#DBDC31', width: '50%' }}
+                    
+                  >
+                    SEND
+                  </Button>
+                </Link>
               </View>
             </Form>
           </Card.Body>

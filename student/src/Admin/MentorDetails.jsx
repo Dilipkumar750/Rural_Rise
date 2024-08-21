@@ -4,15 +4,15 @@ import mentorImage from '../assets/mentorImage.png';
 import { Image } from '../components/Image';
 import Button from 'react-bootstrap/Button';
 import View from "../components/View"; 
+import { Link } from 'react-router-dom';
 
 function MentorDetails() {
   const students = [
     { id: 'Name', name: 'John Das' },
-    { id: 'Email', name: 'john12@gmail.com' },
+    { id: 'Email', name: 'mailto:john12@gmail.com' },
     { id: 'Phone_no', name: '7896541302' },
     { id: 'Qualification', name: 'M.sc Maths' },
-    { id: 'Class', name: '1st to 5th' },
-    { id: 'Fees', name: 'Rs. 500' },
+    { id: 'Job Applied', name: 'Tutor Job' }
   ];
 
   return (
@@ -45,23 +45,24 @@ function MentorDetails() {
         </View>
       </View>
 
-      <Button
-        variant="primary"
-        className="mb-0"
-        href='/Mentorsuccess'
-        style={{ 
-          backgroundColor: '#DBDC31', 
-          borderColor: '#DBDC31', 
-          position: 'fixed', 
-          bottom: '1rem',
-          left: '50%', 
-          transform: 'translateX(-50%)',  // Center the button horizontally.
-          width: '90%',
-          textAlign: 'center' 
-        }}
-      >
-        ADD
-      </Button>
+      <Link to='/Mentorsuccess/admin'>
+        <Button
+          variant="primary"
+          className="mb-0"
+          style={{ 
+            backgroundColor: '#DBDC31', 
+            borderColor: '#DBDC31', 
+            position: 'fixed', 
+            bottom: '1rem',
+            left: '50%', 
+            transform: 'translateX(-50%)',  // Center the button horizontally.
+            width: '90%',
+            textAlign: 'center' 
+          }}
+        >
+          ADD
+        </Button>
+      </Link>
     </>
   );
 }

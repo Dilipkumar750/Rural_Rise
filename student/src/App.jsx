@@ -64,7 +64,6 @@ export const HOST='https://ultrafly-student-backend.onrender.com/rural_rise'
 // export const HOST='http://localhost:8080/rural_rise' 
 
 
-
 function App() {
 
   return (
@@ -101,7 +100,7 @@ function App() {
         <Route path='/StudyMaterialSuccess' element={<StudyMaterialSuccess/>}/>
         <Route path='/RegistrationSucess' element={<RegistrationSucess/>}/>
         <Route path='/MentorTestList' element={<MentorTestList/>}/>
-        <Route path='/MentorTest' element={<MentorTest/>}/>
+        <Route path='/MentorTest/:role' element={<MentorTest/>}/>
         <Route path='/Progress' element={<Progress/>}/>
         <Route path='/Information' element={<Information/>}/>
         <Route path='/InformationTypes' element={<InformationTypes/>}/>
@@ -113,7 +112,7 @@ function App() {
         <Route path='/MentorRecords' element={<MentorRecords/>}/>
         <Route path='/MentorSuccess/:title' element={<MentorSuccess/>}/>
         <Route path='/InformationTypes/:title' element={<InformationTypes/>}/>
-        <Route path='/MentorTestSuccess' element={<MentorTestSuccess/>}/>
+        <Route path='/MentorTestSuccess/:role' element={<MentorTestSuccess/>}/>
         <Route path='/InformationDetails/:title' element={<InformationDetails/>}/>
         <Route path='/JobApply' element={<JobApply/>}/>
         <Route path='/JobDiscription/:id' element={<JobDiscription/>}/>

@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderComponent from '../components/HeaderComponent';
 import View from "../components/View"; 
+import { Link } from 'react-router-dom';
 
 function MentorList() {
   const students = [
@@ -46,19 +47,20 @@ function MentorList() {
           >
             <View>{student.id}</View>
             <View style={{ flexGrow: 1, textAlign: 'center' }}>{student.name}</View>
-            <Button href='/mentordetails'
-              variant="primary" 
-              style={{ 
-                marginLeft: 'auto', 
-                backgroundColor: '#DBDC31', 
-                height: '30px', 
-                width: '20%', 
-                color: 'black',
-                fontSize: '10px'
-              }}
-            >
-              VIEW
-            </Button>
+            <Link to='/mentordetails'>
+              <Button 
+                variant="primary" 
+                style={{ 
+                  marginLeft: 'auto', 
+                  backgroundColor: '#DBDC31', 
+                  height: '30px', 
+                  color: 'black',
+                  fontSize: '10px'
+                }}
+              >
+                VIEW
+              </Button>
+            </Link>
           </View>
         ))}
       </View>
