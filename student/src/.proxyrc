@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://studen-app.onrender.com",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": { "^/api": "" }
+    }
+  }
+  
