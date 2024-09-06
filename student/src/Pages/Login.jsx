@@ -7,21 +7,27 @@ import password from "../assets/password.png";
 import { Image } from "../components/Image";
 import axios from 'axios'
 import { HOST } from '../App';
+import logo from '../assets/logo.jpg';
+
+
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 function Login() {
   const navigate = useNavigate();
-  const [getData, setGetData] = useState({});
-  const [valid, getValid] = useState({});
+  const [getData, setGetData] = useState({}); 
   const [err, seterr] = useState(false);
-  // const [getData1, setGetData1]= useState({});
+  const [valid, setValid]= useState(false);
   const postData = async () => {
     try {
       const response = await axios.post(`${HOST}/user/login`, getData, {
         withCredentials: true,
       });
-  
+  if(response.data.message==='user Reject'){
+    setValid(true);
+  }
       if (response.data.message === 'Success') {
+        localStorage.setItem('user',JSON.stringify(response.data.user))
         const role = response.data.role;
+        const role1 = response.data.action;
   
         if (role === 'student') {
           navigate('/home');
@@ -45,14 +51,13 @@ function Login() {
   return (
     <Container className="d-flex justify-content-center align-items-center flex-column" style={{ height: '100vh', paddingBottom: '0px' }}>
       <Row className="w-100">
-        <Col md={{ span: 6, offset: 3 }}>
+      <Col md={{ span: 6, offset: 3 }}>
           <View className="text-center mb-6">
-            <h1 className="text-center" style={{ marginBottom: '20%' }}>LOGIN</h1>
-            <br />
+            <h1 className="text-center" style={{ marginBottom: '0%' }}>LOGIN</h1>
+            <Image src={logo} alt={'logo'} className="mb-4" /><br/>
             {err ? <small className='text-danger text-center' ><b style={{ alignItems: 'center', justifyContent: 'center' }}>UserName or Password is Incorrect</b></small> : null}
-            <br />
+            {valid ? <small className='text-danger text-center' ><b style={{ alignItems: 'center', justifyContent: 'center' }}>Your Request Has been Rejected By Mentor</b></small> : null}
           </View>
-          <br /><br />
           <Form>
             <Form.Group controlId="formUsername" className="mb-3">
               <InputGroup>
@@ -99,6 +104,7 @@ function Login() {
             </div>
           </Form>
         </Col>
+
       </Row>
       <Button
         variant="primary"

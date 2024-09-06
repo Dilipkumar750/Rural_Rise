@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderComponent from '../components/HeaderComponent';
 import View from "../components/View"; 
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { HOST } from '../App';
 
 function MentorList() {
   const students = [
@@ -15,7 +17,17 @@ function MentorList() {
     { id: 6, name: 'Shailesh' },
     { id: 7, name: 'Archana' },
   ];
+const [mentordata ,setMentorData] = useState([])
 
+  const getMentor = () =>{
+    const mentor = axios.get(`${HOST}/user/userData`).then((res)=>setMentorData(res.data))
+  }
+  useEffect(()=>{
+   getMentor()
+  },[])
+
+ const mentorlist= mentordata.filter(item=> item.role==='mentor' && item.action==='no')
+// console.log(mentorlist)
   return (
     <>
       <HeaderComponent page="Add Mentor" title="Mentor Request" />
@@ -34,7 +46,7 @@ function MentorList() {
           <View>Details</View>
         </View>
         
-        {students.map((student) => (
+        {mentorlist.map((student,index) => (
           <View 
             key={student.id} 
             style={{ 
@@ -45,9 +57,9 @@ function MentorList() {
               borderBottom: '1px solid #ddd'
             }}
           >
-            <View>{student.id}</View>
+            <View>{index+1}</View>
             <View style={{ flexGrow: 1, textAlign: 'center' }}>{student.name}</View>
-            <Link to='/mentordetails'>
+            <Link to={`/mentordetails/${student.id}`}>
               <Button 
                 variant="primary" 
                 style={{ 

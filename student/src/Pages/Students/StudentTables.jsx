@@ -23,7 +23,7 @@ function StudentTables() {
   //   { id: 6, name: 'Shailesh' },
   //   { id: 7, name: 'Archana' },
   // ];
-// const students = data.data
+const students = data1.filter(item=>item.role==='student'&&item.action==='no')
   return (
     <>
       <HeaderComponent page="Student Request" title="Paid Student List" />
@@ -42,7 +42,7 @@ function StudentTables() {
           <View>Details</View>
         </View>
         
-        {Array.isArray(data1) && data1.length > 0 && data1
+        {Array.isArray(students) && students.length > 0 && students
             .filter((value,key) => value.role === 'student').map((student,key) => (
           <View 
             key={student.id} 

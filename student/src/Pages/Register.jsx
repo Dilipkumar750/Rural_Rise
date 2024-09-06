@@ -10,14 +10,14 @@ import View from "../components/View"
 import { Image } from '../components/Image';
 import axios from 'axios';
 import { HOST } from '../App';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {  NavLink, useNavigate } from 'react-router-dom';
 
 function Register() {
   const [createuser, setCreateUser] = useState({
     name: '',
     email: '',
     role: '',
-    contact_number: '',
+    contact_no: '',
     classes: '',
     department: '',
     password: '',
@@ -42,7 +42,7 @@ function Register() {
 
   const register = async () => {
     try {
-      const res = await axios.post(`${HOST}/user/register`, createuser,{withCredentials:true});
+      const res = await axios.post(`${HOST}/user/register`, createuser, { withCredentials: true });
       console.log(res.data);
       setValid(res.data.message);
 
@@ -71,7 +71,7 @@ function Register() {
             <h1>REGISTER</h1>
           </View>
           <Form>
-            {/ Name Field /}
+            {/* Name Field */}
             <Form.Group controlId="formName" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -88,7 +88,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/ Email Field /}
+            {/* Email Field */}
             <Form.Group controlId="formEmail" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -105,7 +105,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-           
+            {/* Role Field */}
             <Form.Group controlId="forrole" className="mb-3">
               <InputGroup>
                 <Form.Select
@@ -117,20 +117,20 @@ function Register() {
                   <option value="" disabled>Select Role</option>
                   <option value="student">Student</option>
                   <option value="mentor">Mentor</option>
-                  {/* {/ <option value="admin">Admin</option>/} */}
+                  {/* <option value="admin">Admin</option> */}
                 </Form.Select>
               </InputGroup>
             </Form.Group>
 
-            
+            {/* Contact Number Field */}
             <Form.Group controlId="formContactNumber" className="mb-3">
               <InputGroup>
                 <Form.Control
                   type="text"
                   placeholder="Contact Number"
                   aria-label="Contact Number"
-                  name="contact_number"
-                  value={createuser.contact_number}
+                  name="contact_no"
+                  value={createuser.contact_no}
                   onChange={handleChange}
                 />
                 <InputGroup.Text style={{ background: 'transparent', border: 'none' }}>
@@ -139,7 +139,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/ Class Field /}
+            {/* Class Field */}
             <Form.Group controlId="formClass" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -156,7 +156,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            {/ Department Field /}
+            {/* Department Field */}
             <Form.Group controlId="formDepartment" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -173,7 +173,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            
+            {/* Password Field */}
             <Form.Group controlId="formPassword" className="mb-3">
               <InputGroup>
                 <Form.Control
@@ -191,7 +191,7 @@ function Register() {
               </InputGroup>
             </Form.Group>
 
-            
+            {/* Confirm Password Field */}
             <Form.Group controlId="formConfirmPassword" className="mb-3">
               <InputGroup>
                 <Form.Control

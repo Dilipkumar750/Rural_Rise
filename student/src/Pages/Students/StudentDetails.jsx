@@ -15,11 +15,22 @@ function StudentDetails() {
   const data1 = axios.get(`${HOST}/user/userData/${id}`).then((res) => setData2(res.data))
   const data3=[data2]
   // console.log('data1', data3)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Email: ${email}\nID No: ${idNo}`);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   alert(`Email: ${email}\nID No: ${idNo}`);
+  // };
+  const addMentor = () => {
+    const data = { action: 'yes' }
+    axios.put(`${HOST}/user/edit/${id}`, data)
+      .then(res => console.log(res)).catch((err) => console.log(err))
+      navigate('/Mentorsuccess/admin')
 
+  }
+  const rejectMentor = () => {
+    const data = { action: 'reject' }
+    axios.put(`${HOST}/user/edit/${id}`,data)
+    navigate('/Mentorsuccess/mentorReject')
+  }
   return (
     <>
       <HeaderComponent page="Request Form" title="Fill Your Form" />
@@ -37,8 +48,8 @@ function StudentDetails() {
 
         <Card className="p-3 shadow-sm">
           <Card.Body>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formEmail">
+            <Form>
+              {/* <Form.Group controlId="formEmail">
                 <Form.Label>Enter Student Email</Form.Label>
                 <Form.Control
                   type="email"
@@ -53,16 +64,28 @@ function StudentDetails() {
                   value={idNo}
                   onChange={(e) => setIdNo(e.target.value)}
                 />
-              </Form.Group>
+              </Form.Group> */}
               <View className="text-center mt-3">
                 <Link to='/studentSucess'>
                   <Button
                     variant="primary"
                     type="submit"
                     style={{ backgroundColor: '#DBDC31', borderColor: '#DBDC31', width: '50%' }}
-                    
+                    onClick={()=>addMentor()}
                   >
-                    SEND
+                    Accept
+                  </Button>
+                </Link>
+              </View>
+              <View className="text-center mt-3">
+                <Link to='/studentSucess'>
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    style={{ backgroundColor: '#DBDC31', borderColor: '#DBDC31', width: '50%' }}
+                    onClick={()=>rejectMentor()}
+                  >
+                    Reject
                   </Button>
                 </Link>
               </View>

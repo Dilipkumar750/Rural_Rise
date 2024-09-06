@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderComponent from '../../components/HeaderComponent';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import addtest from '../../assets/ADDCLASS.png'
 import View from '../../components/View';
 
@@ -91,16 +91,20 @@ function AdminInfoTypes() {
       setarray(Internships)
     }
   }, [])
-
+const navigate=useNavigate()
   return (
     <>
       <HeaderComponent page="More Information" title={title ? title : ''} />
 
       <Container>
-      <View className="d-flex align-items-center mt-3 p-3" style={{border:'1px solid black'}}>
-              <img src={addtest} alt="Add Class" style={{ width: '30px', marginRight: '1rem' }} />
-              ADD TEST
-            </View>
+        <View className="d-flex align-items-center mt-3 p-3" style={{ border: '1px solid black' }}>
+          <img src={addtest} alt="Add Class" style={{ width: '30px', marginRight: '1rem' }} />
+          ADD TEST
+        </View>
+        {title === 'Loans' ? <View className="d-flex align-items-center mt-3 p-3" style={{ border: '1px solid black' }}>
+          <img src={addtest} alt="Add Class" style={{ width: '30px', marginRight: '1rem' }} onClick={navigate('/loanForm')} />
+          ADD TEST
+        </View> : null}
         <h6 className="mt-4">Types Of {title ? title : ''}:</h6>
         <Row>
           {array.map((info, index) => (

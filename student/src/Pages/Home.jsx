@@ -43,7 +43,7 @@ function Home() {
           <SmallBox image={RequestImg} title="Request Form" onPress={()=>navigate('/registrationForm')}/>
         </View>
         <View style={{height: '150px'}}>
-          <SmallBox image={studyImg} title="Add Study Material" onPress={()=>navigate('/addClass')} />
+          <SmallBox image={studyImg} title="Add Study Material" onPress={()=>navigate('/booksPdf')} />
         </View>
         {/* <View style={{height: '150px'}}>
           <SmallBox image={StudentImg} title="Student Record" />

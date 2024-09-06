@@ -59,6 +59,7 @@ import MentorRequest from './Admin/MoreInformations/MentorRequest';
 import Materials from './Mentor/Materials';
 import MaterialList from './Mentor/MaterialList';
 import MentorMathTest from './Mentor/test/Test';
+import { Loan } from './Admin/MoreInformations/loan';
 export const HOST='https://ultrafly-student-backend.onrender.com/rural_rise' 
 // export const HOST='https://studen-app.onrender.com/rural_rise' 
 // export const HOST='http://localhost:8080/rural_rise' 
@@ -72,7 +73,7 @@ function App() {
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/home' element={<Home/>}/>
+        <Route path='/home' element={<MentorHome/>}/>
         <Route path='/registrationForm' element={<RegistrationForm/>}/>
         <Route path='/studentTables' element={<StudentTables/>}/>
         <Route path='/studentDetails/:id' element={<StudentDetails/>}/>
@@ -82,7 +83,7 @@ function App() {
         <Route path='/booksPdf' element={<BooksPdf/>}/>
         <Route path='/VideosPdf' element={<VideosPdf/>}/>
         <Route path='/TestHome' element={<TestHome/>}/>
-        <Route path='/AddTest' element={<AddTest/>}/>
+        <Route path='/AddTest' element={<Materials/>}/>
         <Route path='/MarkList' element={<MarkList/>}/>
         <Route path='/TestList' element={<TestList/>}/>
         <Route path='/FAQ' element={<FAQ/>}/>
@@ -90,10 +91,10 @@ function App() {
         <Route path='/TermsAndConditions' element={<TermsAndConditions/>}/>
         <Route path='/Profile' element={<Profile/>}/>
         <Route path='/EditProfile' element={<EditProfile/>}/>
-        <Route path='/MentorHome' element={<MentorHome/>}/>
+        <Route path='/MentorHome' element={<Home/>}/>
         <Route path='/MentorAccess' element={<MentorAccess/>}/>
-        <Route path='/MentorRegistrationForm' element={<MentorRegistrationForm/>}/>
-        <Route path='/Payment' element={<Payment/>}/>
+        <Route path='/MentorRegistrationForm/:id/:id1' element={<MentorRegistrationForm/>}/>
+        <Route path='/Payment/:id/:id1' element={<Payment/>}/>
         <Route path='/PaymentSuccess' element={<PaymentSuccess/>}/>
         <Route path='/PaymentDetails' element={<PaymentDetails/>}/>
         <Route path='/StudyMaterialsList' element={<StudyMaterialsList/>}/>
@@ -107,7 +108,7 @@ function App() {
         <Route path='/AdminHome' element={<AdminHome/>}/>
         <Route path='/IncentivesList' element={<IncentivesList/>}/>
         <Route path='/InternshipList' element={<InternshipList/>}/>
-        <Route path='/MentorDetails' element={<MentorDetails/>}/>
+        <Route path='/MentorDetails/:id' element={<MentorDetails/>}/>
         <Route path='/MentorList' element={<MentorList/>}/>
         <Route path='/MentorRecords' element={<MentorRecords/>}/>
         <Route path='/MentorSuccess/:title' element={<MentorSuccess/>}/>
@@ -123,11 +124,12 @@ function App() {
         <Route path='/TestCreate' element={<TestCreate/>}/>
         <Route path='/AdminInfoTypes/:title' element={<AdminInfoTypes/>}/>
         <Route path='/AdminAddJob' element={<AdminAddJob/>}/>
-        <Route path='/StudentRequest' element={<StudentRequest/>}/>
-        <Route path='/MentorRequest' element={<MentorRequest/>}/>
-        <Route path='/mentorMaterials' element={<Materials/>}/>
+        <Route path='/Approvedmentors' element={<StudentRequest/>}/>
+        <Route path='/MentorRequest/:id' element={<MentorRequest/>}/>
+        <Route path='/mentorMaterials' element={<AddClass/>}/>
         <Route path='/mentorMaterialList/:title' element={<MaterialList/>}/>
         <Route path='/mentorMathTest' element={<MentorMathTest/>}/>
+        <Route path='/loanForm' element={<Loan/>}/>
       </Routes>
     </>
   )

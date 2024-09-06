@@ -47,7 +47,7 @@ function RegistrationSuccess() {
             transform: 'translateX(-50%)',  // Center the button horizontally.
             width: '90%' 
           }}
-          onClick={()=>{navigate('/home')}}
+          onClick={()=>{navigate('/MentorHome')}}
         >
           OK
         </Button>

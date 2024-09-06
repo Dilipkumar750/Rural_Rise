@@ -52,9 +52,9 @@ function AdminHome() {
             <SmallBox image={MentorRecords} title="Mentor Records" />
           </View>
         </Link>
-        <Link to='/StudentRequest'>
+        <Link to='/Approvedmentors'>
           <View style={{height: '100%',}}>
-            <SmallBox image={RequestList} title="Request List" />
+            <SmallBox image={RequestList} title="Approved Mentors List" />
           </View>
         </Link>
       </View>

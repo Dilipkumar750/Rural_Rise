@@ -64,7 +64,7 @@ function PaymentDetails() {
                     </View>
                 </View>
                 <Button style={{width:'100%',borderRadius:"25px" , backgroundColor:'white',border:'1px solid black',color:'black'}}> <Image src={importImg}/> Get PDF Receipt</Button>
-                <Link to='/MentorHome'><Button style={{width:'100%',borderRadius:"25px" , backgroundColor:'#DBDC31',border:'1px solid black',color:'black',marginTop:'1rem'}}>Back to Homepage</Button></Link>
+                <Link to='/home'><Button style={{width:'100%',borderRadius:"25px" , backgroundColor:'#DBDC31',border:'1px solid black',color:'black',marginTop:'1rem'}}>Back to Homepage</Button></Link>
             </View>
         </>
     );

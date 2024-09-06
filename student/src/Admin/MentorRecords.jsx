@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderComponent from '../components/HeaderComponent';
 // Import the right component if View is a custom component or replace with View
 import View from "../components/View"; 
+import axios from 'axios';
+import { HOST } from '../App';
 
 function MentorRecords() {
   const students = [
@@ -13,7 +15,15 @@ function MentorRecords() {
     { id: 6, name: 'Shailesh', contact: '2345678905' },
     { id: 7, name: 'Archana', contact: '3456789234' },
   ];
+  const [mentordata ,setMentorData] = useState([])
+  const getMentor = () =>{
+    const mentor = axios.get(`${HOST}/user/userData`).then((res)=>setMentorData(res.data))
+  }
+  useEffect(()=>{
+   getMentor()
+  },[])
 
+ const mentorlist= mentordata.filter(item=> item.role==='mentor' && item.action==='yes')
   return (
     <>
       <HeaderComponent page="Mentor Record" title="Listof mentors" />
@@ -32,7 +42,7 @@ function MentorRecords() {
           <View style={{ textAlign: 'center' }}>Contact</View>
         </View>
         
-        {students.map((student) => (
+        {mentorlist.map((student,key) => (
           <View 
             key={student.id} 
             style={{ 
@@ -43,9 +53,9 @@ function MentorRecords() {
               borderBottom: '1px solid #ddd'
             }}
           >
-            <View>{student.id}</View>
+            <View>{key+1}</View>
             <View style={{ flexGrow: 1, textAlign: 'center' }}>{student.name}</View>
-            <View>{student.contact}</View>
+            <View>{student.contact_no}</View>
           </View>
         ))}
       </View>

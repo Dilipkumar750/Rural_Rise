@@ -15,10 +15,10 @@ import { Link } from "react-router-dom";
 
 function MoreInfoHomes() {
   const info = [
-    {
-      title: "Grants",
-      image: grantsImg,
-    },
+    // {
+    //   title: "Grants",
+    //   image: grantsImg,
+    // },
     {
       title: "Loans",
       image: paymentImg,

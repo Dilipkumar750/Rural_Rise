@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderComponent from '../../components/HeaderComponent';
 import mentorImage from '../../assets/mentorImage.png';
 import { Image } from '../../components/Image';
 import Button from 'react-bootstrap/Button';
 import View from "../../components/View"; 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { HOST } from '../../App';
+import axios from 'axios';
 
 
 function MentorRequest() {
+
+  const navigate = useNavigate();
+
+
   const students = [
     { id: 'Name', name: 'John Das' },
     { id: 'Email', name: 'john12@gmail.com' },
@@ -15,10 +21,32 @@ function MentorRequest() {
     { id: 'Qualification', name: 'M.Sc Maths' },
     { id: 'Job Applied', name: 'Tutor Job' },
   ];
+  const {id} = useParams();
+  const [studentList , setStudentList] = useState([]);
+ const getId = async() =>{
+  const response = await axios.get(`${HOST}/user/userData/${id}`)
+  setStudentList(response.data)
+ }
+
+ useEffect(()=>{
+  getId();
+ },[id])
+
+//  const addStudent = () => {
+//   const data = { action: 'yes' }
+//   axios.put(`${HOST}/user/edit/${id}`, data)
+//     .then(res => console.log(res)).catch((err) => console.log(err))
+//     navigate('/MentorSuccess/success')
+
+// }
+// const rejectStudent = () => {
+//   axios.delete(`${HOST}/user/delete/${id}`)
+//   navigate('/MentorSuccess/reject')
+// }
 
   return (
     <>
-      <HeaderComponent page="Add Mentor" title="Mentor Request" />
+      <HeaderComponent page="Add Mentor" title="Mentor List" />
 
       <View style={{
         border: "1px solid rgba(0, 0, 0, 0.16)",
@@ -38,11 +66,13 @@ function MentorRequest() {
         }}>
           <Image src={mentorImage} alt="Mentor" style={{ width: "100px", marginBottom: '1rem' }} />
           
-          {students.map((student, index) => (
-            <View key={index} style={{ margin: '0.5rem 0', fontSize: '16px' }}>
-              <strong>{student.id}:</strong> {student.name}
+          {/* {studentList.map((student, index) => ( */}
+            <View style={{ margin: '0.5rem 0', fontSize: '16px' }}>
+              <strong>Name:</strong> {studentList.name}
+              <br/>
+              <strong>Id:</strong> {studentList.id}
             </View>
-          ))}
+          {/* ))} */}
         </View>
       </View>
 
@@ -57,10 +87,10 @@ function MentorRequest() {
           width: '90%',
         }}
       >
-        <Link to='/MentorSuccess/reject'>
-          <Button
+        {/* <Link to='/MentorSuccess/reject'> */}
+          {/* <Button
             variant="primary"
-            
+            onClick={rejectStudent}
             style={{ 
               backgroundColor: '#DBDC31', 
               borderColor: '#DBDC31', 
@@ -69,12 +99,12 @@ function MentorRequest() {
             }}
           >
             Discard
-          </Button>
-        </Link>
-        <Link to='/MentorSuccess/success'>
-          <Button
+          </Button> */}
+        {/* </Link> */}
+        {/* <Link to=''> */}
+          {/* <Button
             variant="primary"
-            
+            onClick={()=>addStudent()}
             style={{ 
               backgroundColor: '#DBDC31', 
               borderColor: '#DBDC31', 
@@ -82,8 +112,8 @@ function MentorRequest() {
             }}
           >
             Approve
-          </Button>
-        </Link>
+          </Button> */}
+        {/* </Link> */}
       </View>
     </>
   );

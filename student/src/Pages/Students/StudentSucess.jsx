@@ -32,7 +32,7 @@ function StudentSuccess() {
           </p>
         </View>
       </View>
-      <Link to='/home'>
+      <Link to='/MentorHome'>
         <Button
           variant="primary"
           className="mb-0"

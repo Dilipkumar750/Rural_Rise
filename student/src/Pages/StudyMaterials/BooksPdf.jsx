@@ -81,7 +81,7 @@ function BooksPdf() {
   const [data1, setData1] = useState([]);
   useEffect(()=>{
     const data = axios.get(`${HOST}/download/document`).then((res) => {setData1(res.data) })
-  },[data1])
+  },[])
  
   const downloadFile=(id)=>{
     axios.get(`${HOST}/download/document/${id}`,{

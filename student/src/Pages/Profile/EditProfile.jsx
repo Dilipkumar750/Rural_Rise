@@ -13,9 +13,30 @@ import gender from "../../assets/gender.png";
 
 // Adjust this import based on your actual `Image` component or use <img>
 import Image from 'react-bootstrap/Image';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import { HOST } from '../../App';
 
 function EditProfile() {
+  const user = JSON.parse(localStorage.getItem("user"))
+  const [userData, setUserData] = useState({
+    name: user.name,
+    email: user.email,
+    gender: user.gender || '',
+    age: user.age || '',
+    contact_no: user.contact_no || '',
+    college: user.college || '',
+  });
+
+  const handleChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+const navigate= useNavigate()
+
   return (
     <>
       <HeaderComponent page='Edit Profile' />
@@ -30,6 +51,9 @@ function EditProfile() {
                     type="text"
                     placeholder="Name"
                     aria-label="Name"
+                    name='name'
+                    value={userData.name}
+                    onChange={handleChange}
                   />
                   <InputGroup.Text style={{ background: 'transparent', border: 'none' }}>
                     <Image src={user} alt="Name icon" style={{ width: '20px', height: '20px' }} />
@@ -38,12 +62,15 @@ function EditProfile() {
               </Form.Group>
 
               {/* Age Field */}
-              <Form.Group controlId="formAge" className="mb-3">
+              <Form.Group className="mb-3">
                 <InputGroup>
                   <Form.Control
                     type="text"
                     placeholder="Age"
                     aria-label="Age"
+                    name='age'
+                    value={userData.age}
+                    onChange={handleChange}
                   />
                   <InputGroup.Text style={{ background: 'transparent', border: 'none' }}>
                     <Image src={age} alt="Age icon" style={{ width: '20px', height: '20px' }} />
@@ -58,6 +85,9 @@ function EditProfile() {
                     type="text"
                     placeholder="Gender"
                     aria-label="Gender"
+                    name="gender"
+                    value={userData.gender}
+                    onChange={handleChange}
                   />
                   <InputGroup.Text style={{ background: 'transparent', border: 'none' }}>
                     <Image src={gender} alt="Gender icon" style={{ width: '20px', height: '20px' }} />
@@ -72,6 +102,8 @@ function EditProfile() {
                     type="email"
                     placeholder="Email"
                     aria-label="Email"
+                    value={userData.email}
+                    readOnly
                   />
                   <InputGroup.Text style={{ background: 'transparent', border: 'none' }}>
                     <Image src={email} alt="Email icon" style={{ width: '20px', height: '20px' }} />
@@ -83,9 +115,12 @@ function EditProfile() {
               <Form.Group controlId="formContactNumber" className="mb-3">
                 <InputGroup>
                   <Form.Control
-                    type="text"
+                    type="number"
                     placeholder="Contact Number"
                     aria-label="Contact Number"
+                    name='contact_no'
+                    value={userData.contact_no}
+                    onChange={handleChange}
                   />
                   <InputGroup.Text style={{ background: 'transparent', border: 'none' }}>
                     <Image src={telephone} alt="Contact Number icon" style={{ width: '20px', height: '20px' }} />
@@ -100,6 +135,9 @@ function EditProfile() {
                     type="text"
                     placeholder="College"
                     aria-label="College"
+                    name='college'
+                    value={userData.college}
+                    onChange={handleChange}
                   />
                   <InputGroup.Text style={{ background: 'transparent', border: 'none' }}>
                     <Image src={college} alt="College icon" style={{ width: '20px', height: '20px' }} />
@@ -107,22 +145,9 @@ function EditProfile() {
                 </InputGroup>
               </Form.Group>
 
-              {/* Username Field */}
-              <Form.Group controlId="formUsername" className="mb-3">
-                <InputGroup>
-                  <Form.Control
-                    type="text"
-                    placeholder="Username"
-                    aria-label="Username"
-                  />
-                  <InputGroup.Text style={{ background: 'transparent', border: 'none' }}>
-                    <Image src={username} alt="Username icon" style={{ width: '20px', height: '20px' }} />
-                  </InputGroup.Text>
-                </InputGroup>
-              </Form.Group>
 
               {/* Password Field */}
-              <Form.Group controlId="formPassword" className="mb-3">
+              {/* <Form.Group controlId="formPassword" className="mb-3">
                 <InputGroup>
                   <Form.Control
                     type="password"
@@ -134,10 +159,10 @@ function EditProfile() {
                     <Image src={password} alt="Password icon" style={{ width: '20px', height: '20px' }} />
                   </InputGroup.Text>
                 </InputGroup>
-              </Form.Group>
+              </Form.Group> */}
 
               {/* Confirm Password Field */}
-              <Form.Group controlId="formConfirmPassword" className="mb-3">
+              {/* <Form.Group controlId="formConfirmPassword" className="mb-3">
                 <InputGroup>
                   <Form.Control
                     type="password"
@@ -149,18 +174,19 @@ function EditProfile() {
                     <Image src={password} alt="Confirm Password icon" style={{ width: '20px', height: '20px' }} />
                   </InputGroup.Text>
                 </InputGroup>
-              </Form.Group>
+              </Form.Group> */}
 
               {/* Save Button */}
-              <Link to='/Profile'>
-                <Button
-                  variant="primary"
-                  className="mt-2"
-                  style={{ backgroundColor: '#DBDC31', borderColor: '#DBDC31', width: '100%', color: 'black' }}
-                >
-                  OK
-                </Button>
-              </Link>
+              {/* <Link to='/Profile'> */}
+              <Button
+                variant="primary"
+                className="mt-2"
+                style={{ backgroundColor: '#DBDC31', borderColor: '#DBDC31', width: '100%', color: 'black' }}
+                onClick={() => { const id = user.id; axios.put(`${HOST}/user/edit/${id}`, userData); navigate('/Profile') }}
+              >
+                OK
+              </Button>
+              {/* </Link> */}
             </Form>
           </Col>
         </Row>

@@ -13,13 +13,14 @@ import { Image } from "../../components/Image";
 import { Link } from "react-router-dom";
 
 function Profile() {
+  const user = JSON.parse(localStorage.getItem("user"))
   return (
     <>
       <HeaderComponent page="Profile" />
       <View style={{ padding: '1rem' }}>
         <List className='p-4'>
           <Image src={userImg} alt="open book" style={{ width: '80%' }} />
-          <span>Mounika Lakshmi</span>
+          <span>{user.name}</span>
         </List>
       </View>
       <View style={{ padding: '1rem', display: 'grid', gap: '1rem' }}>

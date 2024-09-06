@@ -10,9 +10,19 @@ import visa from "../assets/visa.png";
 import bank from "../assets/bank.png";
 import { BsCreditCardFill } from "react-icons/bs";
 import { Image } from "../components/Image";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { HOST } from "../App";
 
 function Payment() {
+  const navigate = useNavigate();
+  const {id,id1} = useParams()
+  const addMentor = () => {
+      const data = { mentorId: id1}
+      axios.put(`${HOST}/user/edit/${id}`, data)
+        .then(res => console.log(res)).catch((err) => console.log(err)) 
+  
+    }
   return (
     <>
       <HeaderComponent page="Mentor Access" title="Book Your Mentor" />
@@ -75,16 +85,16 @@ function Payment() {
             }}
           >
             <View style={{ height: "65px" }}>
-              <SmallBox image={gpay} title="GPay" />
+              <SmallBox image={gpay} title="GPay" onPress={()=>addMentor()} />
             </View>
             <View style={{ height: "65px" }}>
-              <SmallBox image={phonepe} title="PhonePe" />
+              <SmallBox image={phonepe} title="PhonePe" onPress={()=>addMentor()}/>
             </View>
             <View style={{ height: "65px" }}>
-              <SmallBox image={vector} title="BHIM" />
+              <SmallBox image={vector} title="BHIM" onPress={()=>addMentor()}/>
             </View>
             <View style={{ height: "65px" }}>
-              <SmallBox image={paytm} title="Paytm" />
+              <SmallBox image={paytm} title="Paytm" onPress={()=>addMentor()}/>
             </View>
           </View>
         </Link>
@@ -98,7 +108,7 @@ function Payment() {
         }}
       >
         <p style={{ fontSize: "12px", fontWeight: "600", color: "#89AA04" }}>
-          <BsCreditCardFill /> Debit / Credit Card
+          <BsCreditCardFill onClick={()=>addMentor()}/> Debit / Credit Card
         </p>
         <Link to='/PaymentSuccess'>
           <View
@@ -110,10 +120,10 @@ function Payment() {
             }}
           >
             <View style={{ height: "70px" }}>
-              <SmallBox image={mastercard} title="Mastercard" />
+              <SmallBox image={mastercard} title="Mastercard" onPress={()=>addMentor()}/>
             </View>
             <View style={{ height: "70px" }}>
-              <SmallBox image={visa} title="Visa" />
+              <SmallBox image={visa} title="Visa" onPress={()=>addMentor()}/>
             </View>
           </View>
         </Link>
@@ -127,7 +137,7 @@ function Payment() {
         }}
       >
         <p style={{ fontSize: "12px", fontWeight: "600", color: "#89AA04" }}>
-          <Image src={bank} width={"12px"} /> NET BANKING
+          <Image src={bank} width={"12px"} onPress={()=>addMentor()}/> NET BANKING
         </p>
       </View>
     </>
